@@ -2,14 +2,17 @@
 
 class PrimeFactors {
   for(composite) {
-    let factors = [];
-    for(let i = 2; i <= Math.sqrt(composite); ++i) {
-      while (composite % i === 0) {
+    let factors = [],
+      limit = Math.sqrt(composite),
+      reduction = composite;
+
+    for(let i = 2; i <= limit; ++i) {
+      while (reduction % i === 0) {
         factors.push(i);
-        composite /= i;
+        reduction /= i;
       }
     }
-    if (composite > 1) { factors.push(composite); }
+    if (reduction > 1) { factors.push(reduction); }
     return factors;
   }
 }
